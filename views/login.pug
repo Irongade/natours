@@ -1,0 +1,19 @@
+extends base
+//- block append head
+    //- <meta http-equiv="Content-Security-Policy" content="script-src self https://*.tiles.mapbox.com https://api.mapbox.com https://events.mapbox.com  unsafe-inline">
+    //- <meta http-equiv="Content-Security-Policy" content="default-src *;  style-src 'self' 'unsafe-inline'; script-src 'self' https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js; script-src-elem 'self' https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js; media-src *; font-src *; img-src 'self'; connect-src *; ">
+    //- <meta http-equiv="Content-Security-Policy" content="default-src http: ws:; media-src *; style-src *; font-src *; img-src 'self'; connect-src ws:;">
+
+block content
+    main.main
+        .login-form
+            h2.heading-secondary.ma-bt-lg Log into your account
+            form.form
+                .form__group
+                    label.form__label(for='email') Email address
+                    input#email.form__input(type='email', placeholder='you@example.com', required)
+                .form__group.ma-bt-md
+                    label.form__label(for='password') Password
+                    input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                .form__group
+                    button.btn.btn--green Login
