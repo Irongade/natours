@@ -8,6 +8,7 @@ const mongoSanitize = require("express-mongo-sanitize")
 const xss = require("xss-clean")
 const hpp = require("hpp")
 const compression = require("compression")
+const cors = require("cors")
 
 const tourRouter = require("./routes/tourRoutes")
 const userRouter = require("./routes/userRoutes")
@@ -26,6 +27,21 @@ app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"))
 
 // GLOBAL MIDDLEWARE
+
+// Implement Cross origin scripting (CORS)
+// By setting Access-Control-Allow-Origin to be *
+// If you want a more personalized cors protocol for maybe your frontend app we can do
+//  app.use(cors({
+// origin: "https://www.your-app-name"
+// }))
+app.use(cors())
+
+// an options request is done when there is a put,patch,delete or cookie sending request
+// it basically is a request that asks if any of the requests above can be done (by asking for the same cors protocol to be sent back)
+// can be personalized to a particular request 
+// app.options("/api/v1/tours/:id", cors()) 
+app.options("*", cors())
+
 
 // app.use(function (req, res, next) {
 //     res.setHeader(
