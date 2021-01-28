@@ -19,6 +19,9 @@ const globalErrorHandler = require("./controllers/errorController")
 
 const app = express();
 
+// Heroku is a proxy(modifies incoming requests before passing it into our app), and hence we need to tell express we can trust it
+app.enable("trust proxy");
+
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"))
 
